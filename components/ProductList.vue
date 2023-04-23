@@ -1,15 +1,22 @@
 <template>
-  <div>
-    <p>메인 페이지 입니다</p>
-  </div>
+<div>
+  {{ products }}
+</div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
-  async created() {
+  async asyncData() {
     const response = await axios.get('http://localhost:3000/products')
     console.log(response)
-  }
+    const products = response.data
+    return { products }
+  },
 }
 </script>
+
+<style scoped>
+
+</style>
